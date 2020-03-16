@@ -85,6 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Exploration through DOM Manipulation',
+    date: 'March 15th, 2020',
+    firstParagraph: `While experimentation is fantastic, figuring out how to apply the various different methods of achieving one's best effort is even greater.
+                      Through research and testing, we can figure out most things. Also, trial and error is a great path of discovery.`,
+
+    secondParagraph: `Late nights. Unable to sleep. And yet these projects help me gain clarity and bring exhaustion forward.`,
+
+    thirdParagraph: `More to come. Stay tuned.`
   }
 ];
 
@@ -112,3 +122,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function addArticle (obj) {
+
+let articles = document.querySelector('.articles');
+
+let article = document.createElement('div');
+article.classList.add('article');
+
+let title = document.createElement('h2');
+title.textContent = obj.title;
+
+let dateP = document.createElement('p');
+dateP.classList.add('date');
+dateP.textContent = obj.date;
+
+let pOne = document.createElement('p');
+pOne.textContent = obj.firstParagraph;
+
+let pTwo = document.createElement('p');
+pTwo.textContent = obj.secondParagraph;
+
+let pThree = document.createElement('p');
+pThree.textContent = obj.thirdParagraph;
+
+let spanBtn = document.createElement('span');
+spanBtn.classList.add('expandButton');
+spanBtn.textContent = 'Open/Close';
+spanBtn.addEventListener('click', function(obj) {
+  article.classList.toggle('article-open');
+})
+
+articles.appendChild(article);
+article.appendChild(title);
+article.appendChild(dateP);
+article.appendChild(pOne);
+article.appendChild(pTwo);
+article.appendChild(pThree);
+article.appendChild(spanBtn);
+
+
+}
+
+let dataInfo = data.map((obj) =>{
+  return addArticle(obj);
+});
+
+
