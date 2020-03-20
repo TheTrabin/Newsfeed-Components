@@ -166,5 +166,3 @@ article.appendChild(spanBtn);
 let dataInfo = data.map((obj) =>{
   return addArticle(obj);
 });
-
-
